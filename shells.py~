@@ -7,9 +7,11 @@
 
 
 with open('/etc/passwd', 'r') as f:
+	i = 0
 	w = open('output.txt', 'w')
 	for line in f:
 		inline = [line.split(':',6)]
 		w.write(inline[0][0])
 		w.write('\t')
 		w.write(inline[0][6])
+		i = i+1
