@@ -23,6 +23,7 @@ with open('account.txt', 'r') as f:
 		# Split the line into different string
 		# First Name, Last Name, Amount Owed, Residence, Phone
 		inline = [line.split()]
+		# Store the amount owed into a temporary variable
 		temp_amount = float(inline[0][2])
 		# if its the first time through the loop
 		if (count == 0):
