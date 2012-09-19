@@ -17,15 +17,19 @@ def mul(a):
 	for i in a:
 		prod *= i 
 		res = ('%f' % prod).rstrip('0').rstrip('.')
-	return res
+	print res
 	
 for line in iter(sys.stdin.readline, ''):
 	try:
 		n = float(line)
 	except ValueError as e:
-		sys.stderr.write("Error: not a valid number\n")
-		sys.exit(1)
+		if (line == '\n'):
+			del a[:]
+			continue
+		else:
+			sys.stderr.write("Error: not a valid number\n")
+			sys.exit(1)
 	a.append(n)
 
-print(mul(a))
+mul(a)
 
