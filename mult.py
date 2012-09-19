@@ -6,19 +6,26 @@
 #--------------------------------------------------
 
 import argparse
+import sys
+import traceback
+a = []
+parser = argparse.ArgumentParser(description='Multiply some numbers.')
+args = parser.parse_args()
 
-def mul(iterable):
+def mul(a):
 	prod = 1
-	for n in iterable:
-		prod *= n
+	for i in a:
+		prod *= i 
 		res = ('%f' % prod).rstrip('0').rstrip('.')
 	return res
 	
+for line in iter(sys.stdin.readline, ''):
+	try:
+		n = float(line)
+	except ValueError as e:
+		sys.stderr.write("Error: not a valid number\n")
+		sys.exit(1)
+	a.append(n)
 
-parser = argparse.ArgumentParser(description='Multiply some numbers.')
-parser.add_argument('numbers', metavar='N', type=float, nargs='+', help='a number for the multiplication.')
-
-parser.add_argument(dest='multiply', action='store_const', const=mul, help='multiply the integers.')
-args = parser.parse_args()
-print(args.multiply(args.numbers))
+print(mul(a))
 
