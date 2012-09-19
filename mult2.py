@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #--------------------------------------------------
-# ECE 2524 Homework 3 Problem 1 Shaishav Parekh
+# ECE 2524 Homework 3 Problem 2 Shaishav Parekh
 # 
 # Date: 09/16/2012
 #--------------------------------------------------
