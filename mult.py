@@ -7,7 +7,7 @@
 
 import argparse
 import sys
-import traceback
+
 a = []
 parser = argparse.ArgumentParser(description='Multiply some numbers.')
 args = parser.parse_args()
