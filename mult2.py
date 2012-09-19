@@ -7,9 +7,14 @@
 
 import argparse
 import sys
+import fileinput
 
 a = []
-parser = argparse.ArgumentParser(description='Multiply some numbers.')
+
+parser = argparse.ArgumentParser(description='Multiply some numbers. \n Uses stdin if file is not specified')
+parser.add_argument('file', nargs='?', type=argparse.FileType('r'), default = "-")
+parser.add_argument('--ignore-blank', action="store_true", default=False, help='ignores blanks')
+parser.add_argument('--ignore-non-numeric', action="store_true", default=False, help='ignores non numeric characters')
 args = parser.parse_args()
 
 def mul(a):
@@ -19,16 +24,19 @@ def mul(a):
 		res = ('%f' % prod).rstrip('0').rstrip('.')
 	print res
 	
-for line in iter(sys.stdin.readline, ''):
+for line in iter(args.file.readline, ''):
 	try:
 		n = float(line)
-	except ValueError as e:
-		if (line == '\n'):
+	except ValueError:
+		if (line == '\n' and args.ignore_blank == False):
 			del a[:]
 			continue
-		else:
-			sys.stderr.write("Error: not a valid number\n")
+		elif (line != '\n' and args.ignore_non_numeric == False):
+			sys.stderr.write("Error: not a valid number.\n")
 			sys.exit(1)
+		else:
+			continue
+			
 	a.append(n)
 
 mul(a)
