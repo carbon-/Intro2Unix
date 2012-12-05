@@ -3,11 +3,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cstring>
 
-#define PARENT_READ readpipe[0];
-#define PARENT_WRITE writepipe[1];
-#define CHILD_READ writepipe[0];
-#define CHILD_WRITE readpipe[1];
 //using namespace std;
 
 
@@ -23,7 +20,7 @@ public:
     virtual ~Process();
     
     /* write a string to the child process */
-    void write(const std::string&);
+    void writeString(const std::string&);
 
     /* read a full line from child process, 
        if no line is available, block until one becomes available */
