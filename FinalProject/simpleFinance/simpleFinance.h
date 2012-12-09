@@ -4,17 +4,27 @@
 #include <QFile>
 #include <QDate>
 #include <QTime>
+#include <QDebug>
 #include <QString>
+#include <QStringList>
+#include <QRegExp>
 #include <QList>
+#include <iostream>
 
 struct goal
 {
     QString description;
     int amountToGoal;
     int amountSaved;
-    QDate endDate;
+    QString endDate;
 };
 
+struct cashflow
+{
+    QString description;
+    int amount;
+    QString dateEntered;
+};
 
 class Finance
 {
@@ -22,17 +32,29 @@ public:
     Finance();
     ~Finance();
 
-    openFinanceFile(/*Open File*/);
-    addExpense(QString desc, int amount);
-    addIncome(QString desc, int amount);
-    addGoal(QString desc, int amount, QDate endDate);
-    removeGoal(QString desc);
-    modifyGoal(int amountCurrentlySaved);
+    bool openFinanceFile(QString &Filename);
+    bool addExpense(QString desc, int amount, QString date);
+    bool removeExpense(QString desc);
+    bool addIncome(QString desc, int amount, QString date);
+    bool removeIncome(QString desc);
+    bool addGoal(QString desc, int amountToSave, int amountSaved, QDate endDate);
+    bool removeGoal(QString desc);
+    bool modifyGoalAmount(QString desc, int amountCurrentlySaved);
+    bool modifyGoalDate(QString desc, QString newEnd);
+    void createLists();
+    void showGoals();
+    void showExpenses();
+    void showIncomes();
 
 private:
     int amountInBank;
     QFile myFinanceFile;
-    QList<goal> GoalList;
+    QString myFile;
+    QString fileOwner;
+    QString lastModified;
+    QList<goal*> goalList;
+    QList<cashflow*> incomeList;
+    QList<cashflow*> expenseList;
 };
 
 #endif // SIMPLEFINANCE_H
