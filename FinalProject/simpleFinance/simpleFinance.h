@@ -2,27 +2,28 @@
 #define SIMPLEFINANCE_H
 
 #include <QFile>
-#include <QDate>
-#include <QTime>
 #include <QDebug>
 #include <QString>
 #include <QStringList>
 #include <QRegExp>
 #include <QList>
 #include <iostream>
+#include <iomanip>
 
+// holds a goal
 struct goal
 {
     QString description;
-    int amountToGoal;
-    int amountSaved;
+    double amountToGoal;
+    double amountSaved;
     QString endDate;
 };
 
+// holds expenses/incomes
 struct cashflow
 {
     QString description;
-    int amount;
+    double amount;
     QString dateEntered;
 };
 
@@ -32,28 +33,77 @@ public:
     Finance();
     ~Finance();
 
-    bool openFinanceFile(QString &Filename);
-    bool addExpense(QString desc, int amount, QString date);
+    // Open a file
+    bool openFinanceFile(const QString &Filename);
+
+    // Sets the owner
+    void setOwner(QString owner);
+
+    // Shows the owner
+    void showOwner();
+
+    // Adds an expense
+    bool addExpense(QString desc, double amount, QString date, bool calc);
+
+    // Removes an expense
     bool removeExpense(QString desc);
-    bool addIncome(QString desc, int amount, QString date);
+
+    // Adds an income
+    bool addIncome(QString desc, double amount, QString date, bool calc);
+
+    // Removes an income
     bool removeIncome(QString desc);
-    bool addGoal(QString desc, int amountToSave, int amountSaved, QDate endDate);
+
+    // Adds a goal
+    bool addGoal(QString desc, double amountToSave, double amountSaved, QString endDate);
+
+    // Removes a goal
     bool removeGoal(QString desc);
-    bool modifyGoalAmount(QString desc, int amountCurrentlySaved);
+
+    // Modifies currently saved amount for a goal
+    bool modifyGoalAmount(QString desc, double amountCurrentlySaved);
+
+    // Modifies end date for a goal
     bool modifyGoalDate(QString desc, QString newEnd);
+
+    // Modifies bank amount
+    void modifyBankAmount(double newAmount);
+
+    // saves changes to file
+    void saveToFile();
+
+    // populates expense, income and goal lists
     void createLists();
+
+    // prints goals
     void showGoals();
+
+    // prints expenses
     void showExpenses();
+
+    // prints incomes
     void showIncomes();
 
+    // prints amount
+    void showAmount();
+
+    // prints help
+    void showHelp();
+
 private:
-    int amountInBank;
+    // holds account balance
+    double amountInBank;
+    // holds file
     QFile myFinanceFile;
+    // holds filename
     QString myFile;
+    // holds fileowner
     QString fileOwner;
-    QString lastModified;
+    // holds all goals
     QList<goal*> goalList;
+    // holds all incomes
     QList<cashflow*> incomeList;
+    // holds all expenses
     QList<cashflow*> expenseList;
 };
 

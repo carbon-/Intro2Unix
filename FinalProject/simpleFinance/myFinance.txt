@@ -1,0 +1,4 @@
+Owner: Shaishav Parekh
+Amount In Bank: 50020.50
+Expense: Car, 50000.00, 12/5/2012
+Income: test, 20.00, 12/3/2012
