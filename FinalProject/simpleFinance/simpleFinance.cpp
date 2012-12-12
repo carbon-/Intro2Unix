@@ -115,7 +115,6 @@ void Finance::createLists()
             QStringList splitEntry;
             // split expense into description, amount, date of expense
             splitEntry = newExEntry.split(", ", QString::SkipEmptyParts);
-            qDebug() << splitEntry;
             // add expense to list
             addExpense(splitEntry.at(0), splitEntry.at(1).toDouble(), splitEntry.at(2), false);
         }
@@ -129,7 +128,6 @@ void Finance::createLists()
             QStringList splitEntry;
             // split income into description, amount, date of income
             splitEntry = newInEntry.split(", ", QString::SkipEmptyParts);
-            qDebug() << splitEntry;
             // add income to list
             addIncome(splitEntry.at(0), splitEntry.at(1).toDouble(), splitEntry.at(2), false);
         }
@@ -143,7 +141,6 @@ void Finance::createLists()
             QStringList splitEntry;
             // split goal into description, amount, date of goal, amount saved
             splitEntry = newGoEntry.split(", ", QString::SkipEmptyParts);
-            qDebug() << splitEntry;
             // add goal to list
             addGoal(splitEntry.at(0), splitEntry.at(1).toDouble(), splitEntry.at(2).toDouble(), splitEntry.at(3));
         }
@@ -447,6 +444,8 @@ void Finance::saveToFile()
         out.setRealNumberPrecision(2);
         // output owner
         out << "Owner: " << fileOwner << endl;
+        // output last modified
+        out << "Last Modified: " << QDate::currentDate().toString() << endl;
         // output amount in bank
         out << "Amount In Bank: " << amountInBank << endl;
         // out all expenses

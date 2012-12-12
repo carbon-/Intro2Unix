@@ -205,7 +205,7 @@ int main(int argc, char *argv[])
                         }
                     }
                     /********************************************************************************
-                     * Command: add goal <description> <goalAmount> <amountCurrentlySaved> <endDate>
+                     * Command: add goal <description> <amountCurrentlySaved> <goalAmount> <endDate>
                      * Function: Adds a goal to the goal list with parameters.
                      * <description> One word description of goal.
                      * <goalAmount> Amount needed to reach goal.
@@ -222,7 +222,7 @@ int main(int argc, char *argv[])
                         else
                         {
                             // Add goal to goal list
-                            success = financeSession.addGoal(cmds.at(2), cmds.at(3).toDouble(), cmds.at(4).toDouble(), cmds.at(5));
+                            success = financeSession.addGoal(cmds.at(2), cmds.at(4).toDouble(), cmds.at(3).toDouble(), cmds.at(5));
                             // if goal is successfully added or not, print a message
                             if (success)
                             {

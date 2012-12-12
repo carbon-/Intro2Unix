@@ -2,6 +2,7 @@
 #define SIMPLEFINANCE_H
 
 #include <QFile>
+#include <QDate>
 #include <QDebug>
 #include <QString>
 #include <QStringList>
