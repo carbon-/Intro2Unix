@@ -1,4 +1,14 @@
+/********************************************************
+*
+* simpleFinance.cpp
+* Shaishav Parekh, ECE 2524
+* Implementation file for class Finance. Defines and
+* implements functions for the interface
+*
+********************************************************/
 #include "simpleFinance.h"
+
+
 /*************************************************************
  * Constructor
  ************************************************************/

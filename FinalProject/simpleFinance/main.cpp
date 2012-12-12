@@ -1,3 +1,11 @@
+/********************************************************
+*
+* main.cpp
+* Shaishav Parekh, ECE 2524
+* Interface for finance class.
+* Provides a prompt to add, remove and modify finances.
+*
+********************************************************/
 #include <QCoreApplication>
 #include "simpleFinance.h"
 #include <QDate>

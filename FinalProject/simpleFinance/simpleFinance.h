@@ -1,3 +1,11 @@
+/********************************************************
+*
+* simpleFinance.h
+* Shaishav Parekh, ECE 2524
+* Application header for class Finance. Provides
+* methods and structures.
+*
+********************************************************/
 #ifndef SIMPLEFINANCE_H
 #define SIMPLEFINANCE_H
 
