@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
         while (true)
         {
             // command prompt
-            cout << ">> ";
+            cout << "% ";
             // get argument
             getline(cin, arg);
             // Transform into QString
